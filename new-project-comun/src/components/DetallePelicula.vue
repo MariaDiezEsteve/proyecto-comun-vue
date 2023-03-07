@@ -1,6 +1,5 @@
-
 <template>
-<h1></h1>
+<h1>asdkfjasñdlfkjasñlkdfjd</h1>
 </template>
 
 <script setup>

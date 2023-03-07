@@ -1,38 +1,45 @@
 <template>
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="@/assets/imagenes/pinocho.jpg" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+  <div class="container">
+     <component 
+     :is="screens[position]" 
+     
+     />
   </div>
-</div>
-
-
+  
 </template>
 
-<script setup>
+<script>
+import PeliculasCompletas from "../components/PeliculasCompletas.vue"
+import DetallePelicula from "../components/DetallePelicula.vue"
 
-const peliculas = [
-  {
-    name: "Pinocho",
-    src: "@/assets/imagenes/pinocho.jpg",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, sapiente."
+import { ref}  from "vue"
+
+export default {
+    components: {
+    PeliculasCompletas,
+    DetallePelicula,
   },
-  {
-    name: "Wakanda Forever",
-    src: "@/assets/imagenes/wakanda.jpg",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, sapiente."
-  },
-  {
-    name: "Simpson",
-    src: "@/assets/imagenes/simpson.jpg",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, sapiente."
-  },
-]
+    setup(){
+    const screens = ["PeliculasCompletas", "DetallePelicula"]
+    const position = ref(0)
 
 
+  //   let handleGoTo = (positions) => { /* Cogerá la posicion del array por eso se pasa como argumento */
+  //   position.value = positions;
+  // }
+
+    return {
+      screens,
+      position,
+      // handleGoTo
+    }
+  }
+}
 
 
 
 </script>
+
+<style>
+
+</style>
