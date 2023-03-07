@@ -14,7 +14,7 @@
         >
           <h5 class="card-title">{{ pelicula.name }}</h5>
           <p class="card-text">{{ pelicula.description }}</p>
-          <!-- <a @click ="" class="btn btn-primary">Go somewhere</a> -->
+          <a  @click="handleNext" class="btn btn-primary">Go To Details</a> 
         </div>
       </div>
 </div>
@@ -23,32 +23,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, defineEmits, defineProps } from 'vue'
 
-const peliculas = [
-  {
-    id:1,
-    name: "Pinocho",
-    src: require("../assets/imagenes/pinocho.jpg"),
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, sapiente."
-  },
-  {
-    id:2,
-    name: "Wakanda Forever",
-    src: require("../assets/imagenes/wakanda.jpg"),
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, sapiente."
-  },
-  {
-    id:3,
-    name: "Simpson",
-    src: require("../assets/imagenes/simpson.jpg"),
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, sapiente."
-  },
-]
+defineProps({
+  peliculas: Array,
+});
 
 const mostrarDescription = ref(false)
 
+const emit = defineEmits(['goto'])
 
+function handleNext() {
+        emit("goto", 1)      
+    }
 
 </script>
 
