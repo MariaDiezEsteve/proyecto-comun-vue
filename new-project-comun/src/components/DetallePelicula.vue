@@ -1,52 +1,39 @@
 <template>
 <div class="container">  
-    <div class="card">
-        <div v-if="peliculas.id === 1">
+    <div class="card" v-for="pelicula in peliculas" :key="pelicula.id">
+        <div v-if=" idePeliculas === pelicula.id"> 
             <img 
                 class="card-img-top" 
-                src= "../assets/imagenes/pinocho.jpg"
+                :src= "pelicula.src"
                 alt="Card image cap">
-            <div class="card-body"        >
-            <h5 class="card-title">"Pinocho"</h5>
-            <p class="card-text">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, sapiente."</p>
-            </div>
-        </div> 
-        <div v-else-if="peliculas.id === 2">
-            <img 
-                class="card-img-top" 
-                src= "../assets/imagenes/wakanda.jpg"
-                alt="Card image cap">
-            <div class="card-body"        >
-            <h5 class="card-title">"Wakanda Forever"</h5>
-            <p class="card-text">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, sapiente."</p>
-            </div>
-        </div> 
-        <div v-else>
-            <img 
-                class="card-img-top" 
-                src= "../assets/imagenes/simpson.jpg"
-                alt="Card image cap">
-            <div class="card-body"        >
-            <h5 class="card-title">"Simpson"</h5>
-            <p class="card-text">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, sapiente."</p>
+            <div class="card-body">
+            <h5 class="card-title">{{ pelicula.name }}</h5>
+            <p class="card-text">{{ pelicula.description }}</p>
             </div>
         </div> 
     </div>
 </div>
+    <a @click="handleBack" class="btn btn-primary">Go To Home</a>
 </template>
 
 <script setup>
 
-import { defineProps } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
 defineProps({
   peliculas: Array,
+  idePeliculas: Number,
 });
 
+const emit = defineEmits(['goto'])
 
+
+function handleBack() {
+        emit("goto", 0)      
+    }
 
 </script>
 
-<style>
+<style scoped>
 
 </style>

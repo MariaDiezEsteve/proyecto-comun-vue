@@ -4,6 +4,8 @@
      :is="screens[position]" 
      @goto="handleGoTo"
      :peliculas="peliculas"
+     @idpelicula="handleGetData"
+     :idePeliculas="idePeliculas"
      />
   </div>
   
@@ -23,10 +25,18 @@ export default {
     setup(){
     const screens = ["PeliculasCompletas", "DetallePelicula"]
     const position = ref(0)
+    const idePeliculas = ref(0)
+  
 
      let handleGoTo = (positions) => { /* Cogerá la posicion del array por eso se pasa como argumento */
      position.value = positions;
+   
    }
+
+   let handleGetData = (idPeliculas) => {
+      idePeliculas.value = idPeliculas
+   }
+
 
    const peliculas = [
   {
@@ -47,13 +57,21 @@ export default {
     src: require("../assets/imagenes/simpson.jpg"),
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, sapiente."
   },
+  {
+    id:4,
+    name: "Spiderman",
+    src: require("../assets/imagenes/spiderman.jpg"),
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, sapiente."
+  }
 ]
 
     return {
       screens,
       position,
       handleGoTo,
-      peliculas 
+      peliculas,
+      handleGetData,
+      idePeliculas
     }
   }
 }

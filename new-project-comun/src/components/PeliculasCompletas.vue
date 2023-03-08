@@ -1,6 +1,6 @@
 <template>
 <div class="container">  
-      <div class="card" v-for="pelicula in peliculas" :key="pelicula">
+      <div class="card" v-for="pelicula in peliculas" :key="pelicula.id">
         <img 
             class="card-img-top" 
             :src= "pelicula.src"
@@ -12,9 +12,11 @@
           class="card-body"
           v-show="mostrarDescription"
         >
-          <h5 class="card-title">{{ pelicula.name }}</h5>
+          <h5 class="card-title" >{{ pelicula.name }}</h5>
           <p class="card-text">{{ pelicula.description }}</p>
-          <a  @click="handleNext" class="btn btn-primary">Go To Details</a> 
+          <a  @click="handleNext(pelicula.id)" 
+              class="btn btn-primary"
+          >Go To Details</a> 
         </div>
       </div>
 </div>
@@ -23,7 +25,7 @@
 </template>
 
 <script setup>
-import { ref, defineEmits, defineProps } from 'vue'
+import { ref, defineEmits, defineProps} from 'vue'
 
 defineProps({
   peliculas: Array,
@@ -31,10 +33,12 @@ defineProps({
 
 const mostrarDescription = ref(false)
 
-const emit = defineEmits(['goto'])
 
-function handleNext() {
-        emit("goto", 1)      
+const emit = defineEmits(['goto', 'idpelicula'])
+
+function handleNext(id) {
+          emit("goto", 1)
+          emit("idpelicula", id)     
     }
 
 </script>
