@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import PeliculasCompletas from "../components/PeliculasCompletas.vue"
-import DetallePelicula from "../components/DetallePelicula.vue"
+import PeliculasCompletas from "../components/Peliculas/PeliculasCompletas.vue"
+import DetallePelicula from "../components/Peliculas/DetallePelicula.vue"
 
 import { ref }  from "vue"
 
