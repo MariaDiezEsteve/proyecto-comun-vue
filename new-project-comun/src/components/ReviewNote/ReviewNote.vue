@@ -2,8 +2,8 @@
 
   <div class="cards-container">
                 <div v-for="(review,index) in reviews" :key="index" class="card">    
-                    <p class="usuario">{{review.name}}:</p> 
-                    <h3>{{ review.title }}</h3> 
+                    <p class="usuario">{{review.name}}:</p>
+                    <h3>{{ review.title }}</h3>
                     <h5>{{ review.text }}</h5>
                     <p class="date">{{ review.date.toLocaleDateString("en-eu") }}</p>
                 </div>

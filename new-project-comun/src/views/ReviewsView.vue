@@ -20,6 +20,7 @@
 
 
     <div>
+      <!-- Se llama al componente de reviews para renderizar las opiniones -->
       <ReviewNote :reviews="reviews"/>
 
     </div>
@@ -52,26 +53,32 @@
 
 
   const addNote = () => {
-
+  if(newName.value == ""|newTitle.value == ""|newNote.value == ""){
+    alert("Todos los campos son obligatorios")
+  } else {
     reviews.push({
       name: newName.value,
       title: newTitle.value,
       text: newNote.value,
       date: new Date()
-    })
-
+    });
     newName.value = "";
     newNote.value = "";
     newTitle.value = "";
     esconder.value = false;
   }
-
-
-
-
-  </script>
+}
+</script>
 
     <style scoped>
+    /* para los imputs de pner tu opinion, por defecto escondidos y por encima de todo cundo son visibles */
+    .overlay{
+      position: absolute;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.719);
+      width: 100%;
+      height: 100%;
+    }
     .tarjetaEscondida{
       width: 40%;
       display: flex;
@@ -83,40 +90,36 @@
       background-color: rgb(161, 175, 145);
       padding: 1rem;
       margin-top: 5rem;
-    
     }
-      .overlay{
-        position: absolute;
-        z-index: 10;
-        background-color: rgba(0, 0, 0, 0.719);
-        width: 100%;
-        height: 100%; 
-      }
-      button{
-        margin: 0 1rem;
-        width: 10rem;
-      }
-      .btns{
-        margin-top: 1rem;
-        display: flex;
-      }
-      input{
-        margin-top: 1rem;
-        width: 25rem;
-      }
-      textarea{
-        margin-top: 1rem;
-        width: 25rem;
-      }
 
-      .tituloYBtn{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 30rem;
-        margin-bottom: 2rem;
-        margin-top: 3rem;
-      }
+    button{
+      margin: 0 1rem;
+      width: 10rem;
+    }
+
+    .btns{
+      margin-top: 1rem;
+      display: flex;
+    }
+
+    input{
+      margin-top: 1rem;
+      width: 25rem;
+    }
+
+    textarea{
+      margin-top: 1rem;
+      width: 25rem;
+    }
+
+    .tituloYBtn{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30rem;
+      margin-bottom: 2rem;
+      margin-top: 3rem;
+    }
 
 
      
