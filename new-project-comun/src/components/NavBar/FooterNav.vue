@@ -90,3 +90,13 @@
 </footer>
 <!-- Footer -->
 </template>
+
+
+
+<style scoped>
+ section{
+     margin-top: 10% !important;
+    padding-top: 5% !important;
+ }
+
+</style>
